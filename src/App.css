@@ -33,3 +33,16 @@
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
   cursor: row-resize;
 }
+
+.div-absolute {
+  position:relative;
+}
+
+.div-absolute {
+  position: absolute;
+  /* border-style: dashed; */
+  width: 200px;
+  height: 200px;
+  top: 0px;
+  right: 80px;
+}

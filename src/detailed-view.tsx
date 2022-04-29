@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import Split from "react-split";
 import { userDetails } from "./mock-data";
 import { UserDetails } from "./mock-interface";
+import PieChart from "./pie-chart";
 import ScatterPlot from "./scatter-plot";
 
 const DetailedView = () => {
   const [details] = useState<UserDetails[]>(userDetails);
   const [selDetail, setSelectedDetail] = useState<UserDetails | null>(null);
+  const [hoverDataName, setHoverDataName] = useState("");
 
   const [highlighted, setHighlighted] = useState(-1);
 
@@ -66,9 +68,14 @@ const DetailedView = () => {
             names={names}
             selection={selDetail}
             highlighted={highlighted}
+            hoverDataName={hoverDataName}
+            setHoverDataName={setHoverDataName}
+            detailData={details}
           />
         </div>
-        <div></div>
+        {/* <div>
+          <PieChart data={details} selData={hoverDataName} />
+        </div> */}
       </Split>
       <div></div>
     </Split>

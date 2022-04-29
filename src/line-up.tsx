@@ -33,7 +33,7 @@ const LineUpComponent = (props: ILineUpProps) => {
   return (
     <div>
       <h5 className="mb-5">LineUp view</h5>
-      <LineUp data={arr}>
+      <LineUp data={arr} aggregationStrategy={"group+top+item"}>
         {/* <LineUpStringColumnDesc column="userName" />
         <LineUpNumberColumnDesc column="maths" color="green" />
         <LineUpNumberColumnDesc column="science" color="blue" />
