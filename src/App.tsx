@@ -8,6 +8,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import About from "./about";
 import DetailedView from "./detailed-view";
+// import "../scss/styles.scss";
 
 function App() {
   const [userName, setUserName] = useState<string>("");

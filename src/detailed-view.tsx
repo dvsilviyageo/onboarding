@@ -4,13 +4,45 @@ import { userDetails } from "./mock-data";
 import { UserDetails } from "./mock-interface";
 import PieChart from "./pie-chart";
 import ScatterPlot from "./scatter-plot";
+import Plot from "react-plotly.js";
+import BarChart from "./barChart";
+
+const Chart1 = () => {
+  let x: string[] = [];
+  let y: number[] = [];
+
+  x = ["one", "two", "three"];
+
+  y = [1, 2, 3];
+  return (
+    <div className="div-wrapper mt-2">
+      <Plot
+        data={[
+          {
+            x: x,
+            y: y,
+            type: "bar",
+          },
+          { type: "bar", x: ["four", "five", "six"], y: [4, 5, 6] },
+
+          { type: "bar", x: ["seven", "eight", "nine"], y: [7, 8, 9] },
+        ]}
+        layout={{
+          width: 400,
+          height: 300,
+          yaxis: { title: "Marks" },
+          xaxis: { title: "Subjects" },
+          title: "visualization chart",
+        }}
+      />
+    </div>
+  );
+};
 
 const DetailedView = () => {
   const [details] = useState<UserDetails[]>(userDetails);
   const [selDetail, setSelectedDetail] = useState<UserDetails | null>(null);
   const [hoverDataName, setHoverDataName] = useState("");
-
-  const [highlighted, setHighlighted] = useState(-1);
 
   const x = details.map((detail) => detail.maths);
   const y = details.map((detail) => detail.science);
@@ -21,45 +53,18 @@ const DetailedView = () => {
     // setHighlighted
   };
   return (
-    <Split direction="vertical" style={{ height: "calc(100vh - 4rem)" }}>
-      <Split className="d-flex" minSize={[350]}>
+    <Split
+      direction="vertical"
+      style={{ height: "calc(100vh - 4rem)" }}
+      minSize={[600]}
+    >
+      <Split className="d-flex" minSize={[450, 500]}>
         <div className="container">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-            necessitatibus nobis asperiores reiciendis quas eum voluptates,
-            repudiandae harum ratione hic omnis rem ipsa est eos unde corporis
-            quam eius voluptatibus.
-          </p>
-          <table className="table">
-            <thead className="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Maths</th>
-                <th scope="col">Science</th>
-                <th scope="col">Computer</th>
-              </tr>
-            </thead>
-            <tbody>
-              {details.map((detail) => {
-                return (
-                  <tr key={detail.id}>
-                    <th scope="row">
-                      <input
-                        type="radio"
-                        name="radio-id"
-                        onChange={() => onDetailSelected(detail)}
-                      ></input>
-                    </th>
-                    <td>{detail.userName}</td>
-                    <td>{detail.maths}</td>
-                    <td>{detail.science}</td>
-                    <td>{detail.computer}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <BarChart
+            detailData={details}
+            selection={selDetail}
+            hoverDataName={hoverDataName}
+          ></BarChart>
         </div>
         <div>
           <ScatterPlot
@@ -67,7 +72,6 @@ const DetailedView = () => {
             Y={y}
             names={names}
             selection={selDetail}
-            highlighted={highlighted}
             hoverDataName={hoverDataName}
             setHoverDataName={setHoverDataName}
             detailData={details}

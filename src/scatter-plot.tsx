@@ -8,7 +8,6 @@ interface IScatterPlot {
   Y: any;
   names: any;
   selection: any;
-  highlighted: number;
   hoverDataName: string;
   setHoverDataName: any;
   detailData: UserDetails[];
