@@ -4,7 +4,8 @@ import { UserDetails } from "./mock-interface";
 
 interface IPlotData {
   data: UserDetails[];
-  selData: string;
+  selData: string | undefined;
+  showHoverPieChart?: boolean;
 }
 
 const PieChart = (props: IPlotData) => {
@@ -19,25 +20,29 @@ const PieChart = (props: IPlotData) => {
     const pieDataValue: number[] = Object.values(pieData);
     const pieDataLabel: string[] = Object.keys(pieData);
     console.log(pieData);
-    return (
-      <div>
-        {/* <h5 className="mb-5">pie chart</h5> */}
-        <Plot
-          data={[
-            {
-              values: pieDataValue,
-              labels: pieDataLabel,
-              type: "pie",
-            },
-          ]}
-          layout={{
-            height: 280,
-            width: 280,
-            title: props.selData,
-          }}
-        ></Plot>
-      </div>
-    );
+    if (props.showHoverPieChart === true) {
+      return (
+        <div>
+          {/* <h5 className="mb-5">pie chart</h5> */}
+          <Plot
+            data={[
+              {
+                values: pieDataValue,
+                labels: pieDataLabel,
+                type: "pie",
+              },
+            ]}
+            layout={{
+              height: 280,
+              width: 280,
+              title: props.selData,
+            }}
+          ></Plot>
+        </div>
+      );
+    } else {
+      return null;
+    }
   } else {
     return null;
   }

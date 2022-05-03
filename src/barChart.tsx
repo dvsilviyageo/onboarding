@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Plot from "react-plotly.js";
 import { UserDetails } from "./mock-interface";
+import { DragContext } from "./userContext";
 
 interface IBarChart {
   detailData: UserDetails[];
@@ -9,6 +10,14 @@ interface IBarChart {
 }
 
 const BarChart = (props: IBarChart) => {
+  const { dragSelectNames, setDragSelectNames } = useContext(DragContext);
+  console.log(dragSelectNames);
+
+  // const dragData = dragSelectNames.map((names) => {
+  //   return props.detailData.map((detailName) => detailName.userName === names);
+  // });
+  // console.log(dragData);
+
   let name: string[] | any = [];
   let maths: number[] | any = [];
   let science: number[] | any = [];
@@ -19,6 +28,8 @@ const BarChart = (props: IBarChart) => {
   maths = props.detailData.map((detail) => detail.maths);
   science = props.detailData.map((detail) => detail.science);
   computer = props.detailData.map((detail) => detail.computer);
+
+  console.log(props.selection);
 
   return (
     <div className="mt-2">
@@ -32,13 +43,6 @@ const BarChart = (props: IBarChart) => {
           { type: "bar", x: name, y: science },
 
           { type: "bar", x: name, y: computer },
-          //   {
-          //     x: name,
-          //     y: pieDataValue,
-          //     type: "scatter",
-          //     mode: "lines+markers",
-          //     marker: { color: "red" },
-          //   },
         ]}
         layout={{
           width: 500,

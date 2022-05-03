@@ -5,11 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Router } from "react-router-dom";
 import ReactDOM from "react-dom";
+import "./scss/app.scss";
 
 /**
  * import bootstrap
  */
-import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import "../node_modules/bootstrap/scss/bootstrap.scss";
+
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 
 /**

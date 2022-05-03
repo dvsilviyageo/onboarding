@@ -9,9 +9,13 @@ const About = () => {
 
   const [selDetail, setSelectedDetail] = useState<UserDetails | null>(null);
 
+  const [lineUpSelection, setLineUpSelection] = useState([]);
+
   const onDetailSelected = (detail: UserDetails) => {
     setSelectedDetail(detail);
   };
+
+  console.log(lineUpSelection);
 
   const Chart = () => {
     let x: string[] = [];
@@ -78,7 +82,7 @@ const About = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container about-wrapper">
       <div className="row">
         <div className="col md-6">
           <p>
@@ -129,7 +133,11 @@ const About = () => {
       <div className="row mt-5">
         <hr />
         <div className="mt-5">
-          <LineUpComponent data={details} />
+          <LineUpComponent
+            data={details}
+            selection={lineUpSelection}
+            onSelectionChange={setLineUpSelection}
+          />
         </div>
       </div>
     </div>

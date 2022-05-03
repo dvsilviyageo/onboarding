@@ -1,0 +1,59 @@
+@import './variable';
+
+
+
+
+.container {
+    position: relative;
+  }
+  
+  .div-wrapper {
+    border:1px solid black;
+  }
+  
+  .text-wrapper {
+    align-items: center;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .gutter {
+    background-color: #eee;
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+  
+  .gutter.gutter-horizontal {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+    cursor: col-resize;
+  }
+  
+  .gutter.gutter-vertical {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+    cursor: row-resize;
+  }
+  
+  .div-absolute {
+    position:relative;
+  }
+  
+  .div-absolute {
+    position: absolute;
+    /* border-style: dashed; */
+    width: 200px;
+    height: 200px;
+    top: 0px;
+    right: 80px;
+  }
+
+
+$primary:  $primary-color;
+
+// Import Bootstrap and its default variables
+//import 'bootstrap/dist/css/bootstrap.css'; // Use bootstrap
+// import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import '../../node_modules//bootstrap/scss/bootstrap.scss';

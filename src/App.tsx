@@ -4,11 +4,11 @@ import Home from "./home";
 import Login from "./login";
 import { UserContext } from "./userContext";
 
-import "./App.css";
+// import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import About from "./about";
 import DetailedView from "./detailed-view";
-// import "../scss/styles.scss";
+import "./scss/app.scss";
 
 function App() {
   const [userName, setUserName] = useState<string>("");

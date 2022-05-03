@@ -12,6 +12,9 @@
   align-items: center;
 }
 
+.about-wrapper {
+  overflow-y: scroll;
+}
 
 
 
