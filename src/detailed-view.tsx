@@ -53,10 +53,11 @@ const DetailedView = () => {
   const x = details.map((detail) => detail.maths);
   const y = details.map((detail) => detail.science);
   const names = details.map((detail) => detail.userName);
-  const ass: UserDetails = {};
-  console.log(ass);
 
+  const selectedIndex = lineUpSelection[0];
+  const a: UserDetails = details[selectedIndex];
   console.log(lineUpSelection);
+  console.log(a);
 
   useEffect(() => {
     setDragSelectNames(dragSelectNames);
@@ -91,11 +92,7 @@ const DetailedView = () => {
             />
           </div>
           <div>
-            <BarChart
-              detailData={details}
-              selection={lineUpSelection}
-              hoverDataName={hoverDataName}
-            ></BarChart>
+            <BarChart detailData={a} hoverDataName={hoverDataName}></BarChart>
           </div>
           {/* <div>
           <PieChart data={details} selData={hoverDataName} />

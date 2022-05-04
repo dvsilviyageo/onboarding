@@ -1,59 +1,56 @@
 import React, { useContext, useEffect } from "react";
 import Plot from "react-plotly.js";
-import { UserDetails } from "./mock-interface";
+import { ISelDetail, UserDetails } from "./mock-interface";
 import { DragContext } from "./userContext";
 
 interface IBarChart {
-  detailData: UserDetails[];
-  selection: any;
+  detailData: UserDetails;
   hoverDataName: string;
 }
 
 const BarChart = (props: IBarChart) => {
   const { dragSelectNames, setDragSelectNames } = useContext(DragContext);
-  console.log(dragSelectNames);
 
-  // const dragData = dragSelectNames.map((names) => {
-  //   return props.detailData.map((detailName) => detailName.userName === names);
-  // });
-  // console.log(dragData);
+  console.log(props.detailData);
+  const plotData: ISelDetail = {
+    maths: props.detailData?.maths,
+    science: props.detailData?.science,
+    computer: props.detailData?.computer,
+  };
+  const x = Object.keys(plotData);
 
-  let name: string[] | any = [];
-  let maths: number[] | any = [];
-  let science: number[] | any = [];
-  let computer: number[] | any = [];
+  const y = Object.values(plotData);
+  console.log(y);
 
-  name = props.detailData.map((detail) => detail.userName);
+  // name = props.detailData.map((detail) => detail.userName);
 
-  maths = props.detailData.map((detail) => detail.maths);
-  science = props.detailData.map((detail) => detail.science);
-  computer = props.detailData.map((detail) => detail.computer);
-
-  console.log(props.selection);
-
-  return (
-    <div className="mt-2">
-      <Plot
-        data={[
-          {
-            x: name,
-            y: maths,
-            type: "bar",
-          },
-          { type: "bar", x: name, y: science },
-
-          { type: "bar", x: name, y: computer },
-        ]}
-        layout={{
-          width: 500,
-          height: 500,
-          yaxis: { title: "Subjects" },
-          xaxis: { title: "Names" },
-          title: "visualization chart",
-        }}
-      />
-    </div>
-  );
+  // maths = props.detailData.map((detail) => detail.maths);
+  // science = props.detailData.map((detail) => detail.science);
+  // computer = props.detailData.map((detail) => detail.computer);
+  if (props.detailData) {
+    return (
+      <div className="mt-2">
+        <Plot
+          data={[
+            {
+              x: x,
+              y: y,
+              type: "bar",
+            },
+          ]}
+          layout={{
+            width: 500,
+            height: 500,
+            yaxis: { title: "Marks" },
+            xaxis: { title: "Subjects" },
+            title: `Bar chart: ${props.detailData.userName}`,
+          }}
+        />
+      </div>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default BarChart;
