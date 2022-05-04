@@ -2,16 +2,14 @@ import React, { useState, useContext } from "react";
 import Plot from "react-plotly.js";
 import { UserDetails } from "./mock-interface";
 import PieChart from "./pie-chart";
-import { DragContext } from "./userContext";
+// import { DragContext } from "./userContext";
 // import DragContext from './userContext';
 
 interface IScatterPlot {
   X: any;
   Y: any;
   names: any;
-  // selection: any;
   selection: number[];
-  // lineUpSelection: UserDetails;
   hoverDataName: string;
   setHoverDataName: any;
   detailData: UserDetails[];
@@ -25,12 +23,8 @@ const ScatterPlot = (props: IScatterPlot) => {
   const [dragSelectNames, setDragSelectNames] = useState<string[]>([]);
   const [showHoverPieChart, setShowHoverPieChart] = useState(false);
   const [showLineUpPieChart, setShowLineUpPieChart] = useState(false);
-  // const [lineUpSelection, setLineUpSelection] = useState({});
 
-  const selectedIndex = props.selection[0];
-  const a: UserDetails = props.detailData[selectedIndex];
-  // setLineUpSelection(a);
-  console.log(a);
+  const selectedData: UserDetails = props.detailData[props.selection[0]];
 
   let x: string[] = [];
   let y: number[] = [];
@@ -86,6 +80,7 @@ const ScatterPlot = (props: IScatterPlot) => {
           onSelected={onDragSelect}
         />
       </div>
+
       <div className="div-absolute">
         <PieChart
           data={props.detailData}
@@ -95,7 +90,7 @@ const ScatterPlot = (props: IScatterPlot) => {
 
         <PieChart
           data={props.detailData}
-          selData={a?.userName}
+          selData={selectedData?.userName}
           showHoverPieChart={showLineUpPieChart}
         ></PieChart>
       </div>

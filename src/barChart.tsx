@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Plot from "react-plotly.js";
 import { ISelDetail, UserDetails } from "./mock-interface";
-import { DragContext } from "./userContext";
 
 interface IBarChart {
   detailData: UserDetails;
@@ -9,24 +8,15 @@ interface IBarChart {
 }
 
 const BarChart = (props: IBarChart) => {
-  const { dragSelectNames, setDragSelectNames } = useContext(DragContext);
-
-  console.log(props.detailData);
   const plotData: ISelDetail = {
     maths: props.detailData?.maths,
     science: props.detailData?.science,
     computer: props.detailData?.computer,
   };
+
   const x = Object.keys(plotData);
-
   const y = Object.values(plotData);
-  console.log(y);
 
-  // name = props.detailData.map((detail) => detail.userName);
-
-  // maths = props.detailData.map((detail) => detail.maths);
-  // science = props.detailData.map((detail) => detail.science);
-  // computer = props.detailData.map((detail) => detail.computer);
   if (props.detailData) {
     return (
       <div className="mt-2">

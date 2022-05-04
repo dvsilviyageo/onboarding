@@ -1,6 +1,6 @@
+
 @import './variable';
-
-
+@import '../../node_modules//bootstrap/scss/bootstrap.scss';
 
 
 .container {
@@ -13,13 +13,7 @@
   
   .text-wrapper {
     align-items: center;
-  }
-  
-  
-  
-  
-  
-  
+  }  
   
   .gutter {
     background-color: #eee;
@@ -48,12 +42,16 @@
     height: 200px;
     top: 0px;
     right: 80px;
+  }    
+
+  .btn .btn-primary {
+  //   $btn-background-color: 'red';
+  color: $primary-color;
   }
 
 
-$primary:  $primary-color;
+// $primary:  $primary-color;
 
 // Import Bootstrap and its default variables
 //import 'bootstrap/dist/css/bootstrap.css'; // Use bootstrap
 // import "../../node_modules/bootstrap/scss/bootstrap.scss";
-@import '../../node_modules//bootstrap/scss/bootstrap.scss';

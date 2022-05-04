@@ -1,19 +1,9 @@
 import React, { useState } from "react";
 import { userDetails } from "./mock-data";
 import { UserDetails, ISelDetail } from "./mock-interface";
-import Plot from "react-plotly.js";
-import LineUpComponent from "./line-up";
 
 const About = () => {
   const [details] = useState<UserDetails[]>(userDetails);
-
-  const [selDetail, setSelectedDetail] = useState<UserDetails | null>(null);
-
-  const [lineUpSelection, setLineUpSelection] = useState([]);
-
-  const onDetailSelected = (detail: UserDetails) => {
-    setSelectedDetail(detail);
-  };
 
   return (
     <div className="container">
@@ -38,13 +28,6 @@ const About = () => {
               {details.map((detail) => {
                 return (
                   <tr key={detail.id}>
-                    {/* <th scope="row">
-                      <input
-                        type="radio"
-                        name="radio-id"
-                        onChange={() => onDetailSelected(detail)}
-                      ></input>
-                    </th> */}
                     <td>{detail.userName}</td>
                     <td>{detail.maths}</td>
                     <td>{detail.science}</td>

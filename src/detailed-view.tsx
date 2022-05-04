@@ -1,73 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Split from "react-split";
 import { userDetails } from "./mock-data";
 import { UserDetails } from "./mock-interface";
-import PieChart from "./pie-chart";
 import ScatterPlot from "./scatter-plot";
 import Plot from "react-plotly.js";
 import BarChart from "./barChart";
 import { DragContext } from "./userContext";
 import LineUpComponent from "./line-up";
 
-const Chart1 = () => {
-  let x: string[] = [];
-  let y: number[] = [];
-
-  x = ["one", "two", "three"];
-
-  y = [1, 2, 3];
-  return (
-    <div className="div-wrapper mt-2">
-      <Plot
-        data={[
-          {
-            x: x,
-            y: y,
-            type: "bar",
-          },
-          { type: "bar", x: ["four", "five", "six"], y: [4, 5, 6] },
-
-          { type: "bar", x: ["seven", "eight", "nine"], y: [7, 8, 9] },
-        ]}
-        layout={{
-          width: 400,
-          height: 300,
-          yaxis: { title: "Marks" },
-          xaxis: { title: "Subjects" },
-          title: "visualization chart",
-        }}
-      />
-    </div>
-  );
-};
-
 const DetailedView = () => {
   const [details] = useState<UserDetails[]>(userDetails);
   const [selDetail, setSelectedDetail] = useState<UserDetails | null>(null);
   const [hoverDataName, setHoverDataName] = useState("");
-
   const [dragSelectNames, setDragSelectNames] = useState<string[]>([]);
-
   const [lineUpSelection, setLineUpSelection] = useState([]);
 
   const x = details.map((detail) => detail.maths);
   const y = details.map((detail) => detail.science);
   const names = details.map((detail) => detail.userName);
 
-  const selectedIndex = lineUpSelection[0];
-  const a: UserDetails = details[selectedIndex];
-  console.log(lineUpSelection);
-  console.log(a);
-
-  useEffect(() => {
-    setDragSelectNames(dragSelectNames);
-    console.log(dragSelectNames);
-  }, [dragSelectNames]);
-
-  const onDetailSelected = (detail: UserDetails) => {
-    setSelectedDetail(detail);
-    // setHighlighted
-  };
+  // const selectedIndex = lineUpSelection[0];
+  const selectedData: UserDetails = details[lineUpSelection[0]];
 
   return (
     <Split
@@ -91,14 +44,16 @@ const DetailedView = () => {
               setDragSelectNames={setDragSelectNames}
             />
           </div>
+
           <div>
-            <BarChart detailData={a} hoverDataName={hoverDataName}></BarChart>
+            <BarChart
+              detailData={selectedData}
+              hoverDataName={hoverDataName}
+            ></BarChart>
           </div>
-          {/* <div>
-          <PieChart data={details} selData={hoverDataName} />
-        </div> */}
         </DragContext.Provider>
       </Split>
+
       <div>
         <div className="container mt-5">
           <LineUpComponent

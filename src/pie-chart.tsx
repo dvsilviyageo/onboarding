@@ -10,10 +10,7 @@ interface IPlotData {
 
 const PieChart = (props: IPlotData) => {
   const data: UserDetails[] = props.data;
-  console.log(props);
-  // const pieData = data((pieData: { userName: string; }) => {
-  //   pieData.userName === props.selData
-  // })
+
   if (props.data && props.selData) {
     const pieData: any = data.find((value) => value.userName === props.selData);
     delete pieData.id;
@@ -23,13 +20,13 @@ const PieChart = (props: IPlotData) => {
     if (props.showHoverPieChart === true) {
       return (
         <div>
-          {/* <h5 className="mb-5">pie chart</h5> */}
           <Plot
             data={[
               {
                 values: pieDataValue,
                 labels: pieDataLabel,
                 type: "pie",
+                // textinfo: "none",
               },
             ]}
             layout={{

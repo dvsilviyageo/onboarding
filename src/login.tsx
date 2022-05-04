@@ -22,34 +22,25 @@ const Login = ({
   };
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non
         reprehenderit aliquam fugit suscipit fuga. Laudantium aperiam obcaecati
         consequatur, quas molestias itaque ea veniam labore quod officiis illum
         velit fuga quia!
       </p>
-      {/* <React.Fragment>
-        if(userName === '')
-        { */}
+
       <div>
         <input
-          className="align-self-center justify-self-center mt-5"
+          className="align-self-center justify-self-center mt-5 me-2"
+          placeholder="Enter your name"
           onChange={onLoginChange}
         ></input>
-        <button
-          className="btn btn-primary ms-1"
-          type="button"
-          onClick={onLogin}
-        >
-          {/* <Link className="nav-link" to="/home"> */}
+
+        <button className="btn btn-dark ms-1" type="button" onClick={onLogin}>
           Login
-          {/* </Link> */}
         </button>
       </div>
-      {/* } */}
-      {/* else {<h2>Welcome {userName} !!!</h2>}
-      </React.Fragment> */}
     </div>
   );
 };

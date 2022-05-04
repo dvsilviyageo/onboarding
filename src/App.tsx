@@ -3,8 +3,6 @@ import Navigation from "./navigation";
 import Home from "./home";
 import Login from "./login";
 import { UserContext } from "./userContext";
-
-// import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import About from "./about";
 import DetailedView from "./detailed-view";
@@ -16,7 +14,6 @@ function App() {
   return (
     <div className="container-flex">
       <UserContext.Provider value={{ userName, setUserName }}>
-        {/* <UserContext.Provider value={userName}> */}
         <Navigation />
 
         <Routes>
